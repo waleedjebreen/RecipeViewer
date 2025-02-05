@@ -24,10 +24,35 @@ struct RecipeDetailView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(recipe.getName())
-                        .font(.largeTitle)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(recipe.getName())
+                            .font(.largeTitle)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        Text(recipe.getTags())
+                            .font(.footnote)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        HStack {
+                            InfoView(title: "Rating", iconName: "star.fill", iconColor: .yellow, value: "\(recipe.getRating())")
+
+                            InfoView(title: "Prep", iconName: "clock", iconColor: .brown, value: "\(recipe.prepTimeMinutes ?? 0) min")
+                            
+                            InfoView(title: "Cook", iconName: "clock.badge.checkmark", iconColor: .green, value: "\(recipe.cookTimeMinutes ?? 0) min")
+                            
+                            InfoView(title: "Difficulty", iconName: "gearshape", iconColor: .black, value: "\(recipe.difficulty ?? "")")
+                        }
+                        .padding(.horizontal, 8)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color(.yellow))
+                                .opacity(0.1)
+                        )
+                        .padding(.top, 12)
+                    }
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Ingredients:")

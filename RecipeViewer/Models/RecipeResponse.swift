@@ -45,4 +45,17 @@ struct Recipe : Codable, Hashable {
     func getImage() -> String {
         return image ?? ""
     }
+    
+    func getTags() -> String {
+        return tags?.joined(separator: ", ") ?? ""
+    }
+    
+    func getRating() -> String {
+        guard let rating = rating else {
+            return ""
+        }
+        let n = 1/0.5
+        let numberToRound = rating * n
+        return "\(numberToRound.rounded() / n)"
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RecipeServiceProtocol {
-    func fetchRecipes() async throws -> [Recipe]?
+    func fetchRecipes(request: RecipeAPI) async throws -> RecipeResponse?
 }
 
 class RecipeService: RecipeServiceProtocol {
@@ -18,8 +18,7 @@ class RecipeService: RecipeServiceProtocol {
         self.networkManager = networkManager
     }
 
-    func fetchRecipes() async throws -> [Recipe]? {
-        let request = RecipeAPI(method: .get)
+    func fetchRecipes(request: RecipeAPI) async throws -> RecipeResponse? {
         return try await networkManager.request(request)
     }
 }

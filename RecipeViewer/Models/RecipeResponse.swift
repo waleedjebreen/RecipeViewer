@@ -12,7 +12,7 @@ struct RecipeResponse: Codable {
     let limit : Int?
 }
 
-struct Recipe : Codable {
+struct Recipe : Codable, Hashable {
     let id : Int?
     let name : String?
     let ingredients : [String]?
@@ -29,4 +29,20 @@ struct Recipe : Codable {
     let rating : Double?
     let reviewCount : Int?
     let mealType : [String]?
+    
+    func getName() -> String {
+        return name ?? ""
+    }
+    
+    func getIngredients() -> String {
+        return ingredients?.joined(separator: ", ") ?? ""
+    }
+    
+    func getInstructions() -> [String] {
+        return instructions ?? []
+    }
+    
+    func getImage() -> String {
+        return image ?? ""
+    }
 }

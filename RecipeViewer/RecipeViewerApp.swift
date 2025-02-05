@@ -11,7 +11,7 @@ import SwiftUI
 struct RecipeViewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RecipeListView(viewModel: RecipeViewModel(service: RecipeService(networkManager: NetworkManager(baseURL: URL(string: "https://dummyjson.com")!))))
         }
     }
 }

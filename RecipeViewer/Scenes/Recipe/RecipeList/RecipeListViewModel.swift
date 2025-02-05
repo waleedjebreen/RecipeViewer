@@ -47,7 +47,7 @@ class RecipeViewModel: ObservableObject {
         return filtered
     }
 
-    func fetchRecipes() async {
+    func fetchRecipes(isLoadMore: Bool = false) async {
         
         guard self.recipes.count != totalRecipesCount else { return }
         isLoading = true
@@ -58,7 +58,11 @@ class RecipeViewModel: ObservableObject {
             let response = try await service.fetchRecipes(request: request)
             let newRecipes = response?.recipes ?? []
             totalRecipesCount = response?.total ?? 0
-            self.recipes.append(contentsOf: newRecipes)
+            if isLoadMore {
+                self.recipes.append(contentsOf: newRecipes)
+            } else {
+                self.recipes = newRecipes
+            }
         } catch(let error) {
             errorMessage = "Failed to fetch recipes \(error.localizedDescription)"
         }

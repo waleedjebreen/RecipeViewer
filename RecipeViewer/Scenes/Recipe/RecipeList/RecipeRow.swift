@@ -50,5 +50,7 @@ struct RecipeRow: View {
             .shadow(radius: 3)
         )
         .padding(.horizontal, 10)
+        .accessibilityIdentifier("recipeRow")
+        .accessibility(addTraits: .isButton)
     }
 }

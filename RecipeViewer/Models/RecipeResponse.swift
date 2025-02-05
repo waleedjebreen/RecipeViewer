@@ -10,6 +10,13 @@ struct RecipeResponse: Codable {
     let total : Int?
     let skip : Int?
     let limit : Int?
+    
+    init(recipes: [Recipe]?, total: Int?, skip: Int?, limit: Int?) {
+        self.recipes = recipes
+        self.total = total
+        self.skip = skip
+        self.limit = limit
+    }
 }
 
 struct Recipe : Codable, Hashable {
@@ -29,6 +36,25 @@ struct Recipe : Codable, Hashable {
     let rating : Double?
     let reviewCount : Int?
     let mealType : [String]?
+    
+    init(id: Int?, name: String?, ingredients: [String]?, instructions: [String]?, prepTimeMinutes: Int?, cookTimeMinutes: Int?, servings: Int?, difficulty: String?, cuisine: String?, caloriesPerServing: Int?, tags: [String]?, userId: Int?, image: String?, rating: Double?, reviewCount: Int?, mealType: [String]?) {
+        self.id = id
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+        self.prepTimeMinutes = prepTimeMinutes
+        self.cookTimeMinutes = cookTimeMinutes
+        self.servings = servings
+        self.difficulty = difficulty
+        self.cuisine = cuisine
+        self.caloriesPerServing = caloriesPerServing
+        self.tags = tags
+        self.userId = userId
+        self.image = image
+        self.rating = rating
+        self.reviewCount = reviewCount
+        self.mealType = mealType
+    }
     
     func getName() -> String {
         return name ?? ""

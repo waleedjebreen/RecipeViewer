@@ -14,6 +14,7 @@ struct SearchBar: View {
         HStack {
             TextField("Search Recipes...", text: $text)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .accessibilityIdentifier("searchBar")
         }
     }
 }

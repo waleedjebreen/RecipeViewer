@@ -29,11 +29,13 @@ struct RecipeDetailView: View {
                             .font(.largeTitle)
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("recipeName")
                         
                         Text(recipe.getTags())
                             .font(.footnote)
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("recipeTags")
                         
                         HStack {
                             InfoView(title: "Rating", iconName: "star.fill", iconColor: .yellow, value: "\(recipe.getRating())")
@@ -58,6 +60,7 @@ struct RecipeDetailView: View {
                         Text("Ingredients:")
                             .font(.subheadline)
                             .fontWeight(.bold)
+                            .accessibilityIdentifier("recipeIngredients")
                         
                         Text(recipe.getIngredients())
                             .font(.body)
@@ -75,6 +78,7 @@ struct RecipeDetailView: View {
                                 .font(.footnote)
                                 .multilineTextAlignment(.leading)
                                 .fixedSize(horizontal: false, vertical: true)
+                                .accessibilityIdentifier("instruction_\(index + 1)")
                         }
                     }
                 }
@@ -82,5 +86,6 @@ struct RecipeDetailView: View {
             }
             .padding()
         }
+        .accessibilityIdentifier("recipeDetailsScrollView")
     }
 }

@@ -21,13 +21,18 @@ struct RecipeListView: View {
                     Text("Sorting")
                         .font(.footnote)
                         .fontWeight(.medium)
+                        .accessibilityIdentifier("sortPicker")
+                    
                     Picker("Sort By", selection: $viewModel.sortOption) {
                         Text("None")
                             .tag(RecipeViewModel.SortOption.none)
+                            .accessibility(addTraits: .isButton)
                         Text("A-Z")
                             .tag(RecipeViewModel.SortOption.alphabetical)
+                            .accessibility(addTraits: .isButton)
                         Text("Z-A")
                             .tag(RecipeViewModel.SortOption.reverseAlphabetical)
+                            .accessibility(addTraits: .isButton)
                     }
                     .pickerStyle(.segmented)
                 }
@@ -48,7 +53,7 @@ struct RecipeListView: View {
                                         .onAppear {
                                             if recipe == viewModel.recipes.last {
                                                 Task {
-                                                    await viewModel.fetchRecipes()
+                                                    await viewModel.fetchRecipes(isLoadMore: true)
                                                 }
                                             }
                                         }
@@ -62,6 +67,7 @@ struct RecipeListView: View {
                             await viewModel.refreshRecipes()
                         }.value
                     }
+                    .accessibilityIdentifier("recipeListScrollView")
                     
                     if viewModel.isLoading {
                         ProgressView("Loading...")

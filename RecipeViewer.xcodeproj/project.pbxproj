@@ -30,11 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		991642E22D535CA5005D12E0 /* RecipeViewer */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RecipeViewer;
-			sourceTree = "<group>";
-		};
 		991642F32D535CA7005D12E0 /* RecipeViewerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RecipeViewerTests;
@@ -43,6 +38,11 @@
 		991642FD2D535CA7005D12E0 /* RecipeViewerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RecipeViewerUITests;
+			sourceTree = "<group>";
+		};
+		9916431D2D535D79005D12E0 /* RecipeViewer */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RecipeViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,7 +75,7 @@
 		991642D72D535CA5005D12E0 = {
 			isa = PBXGroup;
 			children = (
-				991642E22D535CA5005D12E0 /* RecipeViewer */,
+				9916431D2D535D79005D12E0 /* RecipeViewer */,
 				991642F32D535CA7005D12E0 /* RecipeViewerTests */,
 				991642FD2D535CA7005D12E0 /* RecipeViewerUITests */,
 				991642E12D535CA5005D12E0 /* Products */,
@@ -108,7 +108,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				991642E22D535CA5005D12E0 /* RecipeViewer */,
+				9916431D2D535D79005D12E0 /* RecipeViewer */,
 			);
 			name = RecipeViewer;
 			packageProductDependencies = (

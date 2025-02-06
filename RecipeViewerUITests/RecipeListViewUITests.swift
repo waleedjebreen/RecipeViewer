@@ -23,13 +23,14 @@ final class RecipeListViewUITests: XCTestCase {
 
     // ✅ Test search functionality
     func testSearchBarFiltering() {
-        let searchField = app.textFields["searchBar"]
-        XCTAssertTrue(searchField.waitForExistence(timeout: 10), "Search bar should exist")
+        let searchField = app.navigationBars.searchFields.element
+        XCTAssertTrue(searchField.exists)
 
         searchField.tap()
         searchField.typeText("Pizza")
+        app.keyboards.buttons["Search"].tap()
 
-        let filteredRecipe = app.buttons["recipeRow"]
+        let filteredRecipe = app.buttons["recipeRow"].firstMatch
         XCTAssertTrue(filteredRecipe.waitForExistence(timeout: 10), "Filtered recipe should be visible")
     }
 

@@ -8,14 +8,18 @@
 import XCTest
 @testable import RecipeViewer
 
-class RecipeServiceMock: RecipeServiceProtocol {
-    var shouldReturnError = false
-
-    func fetchRecipes(request: RecipeAPI) async throws -> RecipeViewer.RecipeResponse? {
-        if shouldReturnError {
-            throw URLError(.badServerResponse)
+class MockRecipeService: RecipeServiceProtocol {
+    var mockResponse: RecipeResponse?
+    var mockError: Error?
+    
+    func fetchRecipes(request: NetworkModule) async throws -> RecipeResponse? {
+        if let error = mockError {
+            throw error
         }
-
+        return mockResponse
+    }
+    
+    func generateMockResponse() -> RecipeResponse? {
         let recipes = [
             Recipe.init(
                 id: 0,
@@ -55,6 +59,6 @@ class RecipeServiceMock: RecipeServiceProtocol {
             )
         ]
         
-        return RecipeViewer.RecipeResponse.init(recipes: recipes, total: 2, skip: 0, limit: 10)
+        return RecipeResponse.init(recipes: recipes, total: 2, skip: 0, limit: 10)
     }
 }

@@ -26,8 +26,10 @@ class RecipeViewModel: ObservableObject {
         }
     }
 
-    enum SortOption {
-        case alphabetical, reverseAlphabetical, none
+    enum SortOption: String {
+        case alphabetical = "asc"
+        case reverseAlphabetical = "desc"
+        case none
     }
 
     var filteredRecipes: [Recipe] {
@@ -54,8 +56,7 @@ class RecipeViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-            let request = RecipeAPI(method: .get, queryParameters: ["limit": 10, "skip": recipes.count])
-            let response = try await service.fetchRecipes(request: request)
+            let response = try await service.fetchRecipes(request: RecipeModule.recipiesList(limit: 10, skip: recipes.count))
             let newRecipes = response?.recipes ?? []
             totalRecipesCount = response?.total ?? 0
             if isLoadMore {
